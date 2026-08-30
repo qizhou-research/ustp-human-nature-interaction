@@ -41,4 +41,8 @@ Code is released under the MIT License. See `LICENSE`.
 
 ## Citation
 
-If you use this code, please cite the paper. Once archived, this repository's citable DOI will be `[DOI xx.xxxx/zenodo.xxxxxxx]`.
+If you use this code, please cite the paper. This repository is archived on Zenodo at the following DOI, which resolves to the exact v1.0.0 release.
+
+▎ DOI: 10.5281/zenodo.22178919 (https://doi.org/10.5281/zenodo.22178919)
+
+Repository: https://github.com/qizhou-research/ustp-human-nature-interaction
