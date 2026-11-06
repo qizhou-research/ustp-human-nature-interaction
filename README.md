@@ -31,4 +31,4 @@ MIT, see `LICENSE`.
 
 ## Citation
 
-Please cite the paper. Archived on Zenodo, DOI: [to be added after release].
+Please cite the paper. Archived on Zenodo, DOI:  10.5281/zenodo.23998277.
