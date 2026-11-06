@@ -1,48 +1,34 @@
-# Analysis code
+# ustp-human-nature-interaction
 
-Code accompanying "Undergrounding sewage treatment reshapes human-nature interaction through positive ecological amenities rather than passive nuisance mitigation." Corresponding author Shen Qu (squ@bit.edu.cn).
+Key analysis code for "Undergrounding wastewater treatment plants turns urban nuisances into amenities" (corresponding author Shen Qu, squ@bit.edu.cn).
 
-This repository contains `analysis.R`, which documents the analytic settings behind the manuscript's results. It shows the propensity-score-matching specification, every structural equation model specification (the main model, its mediation decomposition, subgroup heterogeneity by gender/age/tenure, all robustness and sensitivity variants reported in the manuscript and its Supplementary Information, and the measurement-model checks behind Supplementary Tables S4 through S8 and Extended Data 3), and the fit-index criteria used to evaluate them.
+`key_analysis.R` (about 100 lines) contains the analytic settings behind the paper's main results.
 
-`analysis.R` is a reference for what was fitted and how, not an executable end-to-end pipeline. Raw survey data are individual-level and are withheld from this public repository to protect participant privacy, consistent with the manuscript's Data availability statement, so the script assumes a cleaned analytic data frame is already in scope rather than reconstructing it from the original survey exports (see the comment at the top of section 1 in `analysis.R` for the assumed data structure). Figure-generation code and one-off GIS/geocoding data preparation are also not included, since neither documents an analytic setting.
+| Section | What it does | Reported in |
+|---|---|---|
+| 1 | 2,000 m analytic sample and 1:2 propensity-score matching | Fig. 2b |
+| 2 | Structural equation model and decomposition of the USTP effect into nuisance, attraction and direct components | Figs. 3 and 4a,b, Extended Data 2 |
+| 3 | Re-matching and re-estimation at alternative distance thresholds | Fig. 4c, Supplementary Table S10 |
+| 4 | Full-model multi-group SEM by gender, age and residential tenure | Fig. 5, Supplementary Fig. S4 |
+
+The script assumes a cleaned survey data frame `data_full` (N = 780 valid responses) with item columns PE1-4, CP1-4, OP1-4, BH1-4, MT1-4, IA1-4, PB1, PB2, PB4, KN1-4, TR1-4, and the variables `USTP` (1 underground, 0 aboveground), `Age`, `Gender` (1 male, 0 female), `tenure_years`, `green_walk_time_cat` (walking time to the nearest green space, 4 categories) and `dist_to_plant_m` (GPS distance to the surveyed plant). Construct abbreviations follow the paper's Methods.
 
 ## Requirements
 
-The model-fitting calls in `analysis.R` use these R packages.
+R 4.x with
 
 ```r
-install.packages(c("dplyr", "tidyr", "tibble", "psych", "lavaan", "semTools", "MatchIt", "cobalt"))
+install.packages(c("dplyr", "lavaan", "MatchIt", "cobalt"))
 ```
-
-## How to read this file
-
-`analysis.R` is organized to mirror the manuscript and Supplementary Information, with a comment above each block naming the table or figure it supports.
-
-1. Data preparation (assumed clean sample, main analytic threshold)
-2. Propensity-score matching specification
-3. Main structural equation model
-4. Mediation decomposition (Fig. 3)
-5. Subgroup heterogeneity (gender, age, tenure)
-6. Full-model multi-group SEM by subgroup (Fig. 4, Supplementary Fig. S4)
-7. Robustness and sensitivity checks (Supplementary Tables S10 through S13, S16)
-8. Measurement-model equality constraints (Supplementary Table S16)
-9. Odor-perceptibility and odor-source correlations (Discussion)
-10. Descriptive statistics, reliability, and CFA behind Supplementary Tables S4 through S8 and Extended Data 3 (basic demographic and item-level comparison tables, Tables S2-S3, are omitted as routine descriptive computations)
-
-Each `lavaan` model string is the actual specification used to produce the corresponding reported numbers. Fit indices are reported on the same MLR-robust scale used throughout the manuscript's Methods, "Model fit indices" (chi-square to degrees of freedom ratio, CFI, RMSEA, SRMR).
 
 ## Data
 
-Individual-level survey data, including the raw responses and the manual plant-assignment corrections used during cleaning, are available from the corresponding author upon reasonable request, consistent with the manuscript's Data availability statement.
+Individual-level survey data include residential locations and are withheld to protect participant privacy. De-identified data are available from the corresponding author on reasonable request.
 
 ## License
 
-Code is released under the MIT License. See `LICENSE`.
+MIT, see `LICENSE`.
 
 ## Citation
 
-If you use this code, please cite the paper. This repository is archived on Zenodo at the following DOI, which resolves to the exact v1.0.0 release.
-
-▎ DOI: 10.5281/zenodo.22178919 (https://doi.org/10.5281/zenodo.22178919)
-
-Repository: https://github.com/qizhou-research/ustp-human-nature-interaction
+Please cite the paper. Archived on Zenodo, DOI: [to be added after release].
